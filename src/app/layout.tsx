@@ -1,13 +1,16 @@
+import { Inter } from "next/font/google";
 import { Container } from "@/components/layout/container/container";
-import "@/styles/globals.scss";
-// import { Inter } from "next/font/google";
-
-// const inter = Inter({ subsets: ["latin"] });
+import "@/styles/global.scss";
 
 export const metadata = {
-  title: "Single Modal | Home",
+  title: "Home | Single Modal",
   description: "Home page description",
 };
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export default function RootLayout({
   children,
@@ -15,9 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/* <body className={inter.className}>{children}</body> */}
-      <body>
+    <html lang="en" className={inter.variable}>
+      <body className={inter.className}>
         <Container>{children}</Container>
       </body>
     </html>
