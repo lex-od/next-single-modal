@@ -1,6 +1,7 @@
 "use client";
 import { Modal } from "@/components/ui/Modal/Modal";
 import { useState } from "react";
+import { NewCardForm } from "../NewCardForm/NewCardForm";
 
 export const NewCardButton = () => {
   const [isModal, setIsModal] = useState(false);
@@ -14,9 +15,7 @@ export const NewCardButton = () => {
       <button onClick={toggleModal}>Create New Card</button>
 
       <Modal isOpen={isModal} onClose={toggleModal}>
-        <div style={{ backgroundColor: "#F9F9FA", width: 720, height: 500 }}>
-          hello
-        </div>
+        <NewCardForm onClose={toggleModal} />
       </Modal>
     </>
   );

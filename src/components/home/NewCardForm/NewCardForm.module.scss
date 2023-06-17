@@ -1,0 +1,42 @@
+.form {
+  width: 720px;
+  height: 100%;
+  padding-right: 11px;
+  background-color: #f9f9fa;
+}
+
+.scrollWrap {
+  height: 100%;
+  padding: 22px 9px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 44px;
+
+  overflow-y: scroll;
+
+  // Firefox
+  scrollbar-color: #edeff1 transparent;
+  scrollbar-width: thin;
+
+  // Chrome
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 40px;
+    background-color: #edeff1;
+  }
+  &::-webkit-scrollbar-button {
+    height: 24px;
+  }
+}
+
+.topWrap {
+  min-height: 400px;
+  background-color: navajowhite;
+}
+
+.submitGroup {
+  background-color: tomato;
+}
