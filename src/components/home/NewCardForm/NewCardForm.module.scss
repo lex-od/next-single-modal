@@ -36,6 +36,29 @@
   min-height: 400px;
 }
 
+label.inputLabel {
+  padding: 2px 12px;
+  gap: 12px;
+
+  :global(.input-wrap) {
+    height: 30px;
+  }
+
+  :global(.input) {
+    font-size: 12px;
+    line-height: 1.33;
+
+    &:focus + :global(.label-text),
+    &:not(:placeholder-shown) + :global(.label-text) {
+      font-size: 11px;
+    }
+  }
+
+  :global(.label-text) {
+    font-size: 12px;
+  }
+}
+
 .submitGroup {
   background-color: tomato;
 }

@@ -20,6 +20,7 @@ export const NewCardForm: FC<INewCardForm> = ({ onClose }) => {
           <Input
             labelText="Card Number*"
             icon={InformationCircleIcon}
+            labelClassName={css.inputLabel}
             placeholder="Number"
           />
         </div>

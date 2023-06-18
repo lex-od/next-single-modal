@@ -1,5 +1,5 @@
 .label {
-  padding: 4px 16px;
+  padding: 3px 16px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -14,72 +14,72 @@
   &:focus-within {
     border-color: #6367f6;
 
-    > .icon {
+    :global(.icon) {
       fill: #6367f6;
     }
-    .labelText {
+    :global(.label-text) {
       color: #6367f6;
     }
   }
-  &.isError {
+  &:global(.is-error) {
     background-color: rgba(208, 103, 106, 0.1);
     border-color: #d0676a;
 
-    > .icon {
+    :global(.icon) {
       fill: #d0676a;
     }
-    .labelText {
+    :global(.label-text) {
       color: #d0676a;
     }
   }
-}
 
-.icon {
-  fill: #5a607d;
-  transition: fill 200ms;
-}
-
-.inputWrap {
-  position: relative;
-  height: 40px;
-  flex-grow: 1;
-  display: flex;
-  align-items: flex-end;
-}
-
-.input {
-  width: 100%;
-  padding: 0;
-
-  border: none;
-  outline: none;
-  background-color: transparent;
-
-  color: #070f18;
-  line-height: 1.71;
-
-  &::placeholder {
-    opacity: 0;
-    color: #b8bbc8;
-    transition: opacity 200ms;
+  :global(.icon) {
+    fill: #5a607d;
+    transition: fill 200ms;
   }
-  &:focus::placeholder {
-    opacity: 1;
-  }
-  &:focus + .labelText,
-  &:not(:placeholder-shown) + .labelText {
-    top: 0;
-    transform: none;
-    font-size: 12px;
-  }
-}
 
-.labelText {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 200ms;
+  :global(.input-wrap) {
+    position: relative;
+    height: 40px;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+  }
 
-  line-height: 1.33;
+  :global(.input) {
+    width: 100%;
+    padding: 0;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    color: #070f18;
+    line-height: 1.71;
+
+    &::placeholder {
+      opacity: 0;
+      color: #b8bbc8;
+      transition: opacity 200ms;
+    }
+    &:focus::placeholder {
+      opacity: 1;
+    }
+    &:focus + :global(.label-text),
+    &:not(:placeholder-shown) + :global(.label-text) {
+      top: 0;
+      transform: none;
+      font-size: 12px;
+    }
+  }
+
+  :global(.label-text) {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 200ms;
+
+    line-height: 1.33;
+  }
 }
