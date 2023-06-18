@@ -15,7 +15,7 @@ export const Input: FC<IInput> = ({ label, placeholder, icon: Icon }) => {
       <span className={css.inputWrap}>
         <input className={css.input} placeholder={placeholder} />
 
-        {/* <span className={css.labelText}>{label}</span> */}
+        <span className={css.labelText}>{label}</span>
       </span>
     </label>
   );
