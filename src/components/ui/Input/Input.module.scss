@@ -8,6 +8,35 @@
   border: 1px solid #edeff1;
   border-radius: 10px;
   cursor: text;
+  transition: border-color 200ms;
+
+  &:hover,
+  &:focus-within {
+    border-color: #6367f6;
+
+    > .icon {
+      fill: #6367f6;
+    }
+    .labelText {
+      color: #6367f6;
+    }
+  }
+  &.isError {
+    background-color: rgba(208, 103, 106, 0.1);
+    border-color: #d0676a;
+
+    > .icon {
+      fill: #d0676a;
+    }
+    .labelText {
+      color: #d0676a;
+    }
+  }
+}
+
+.icon {
+  fill: #5a607d;
+  transition: fill 200ms;
 }
 
 .inputWrap {

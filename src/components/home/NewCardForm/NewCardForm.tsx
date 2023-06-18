@@ -2,8 +2,8 @@
 // div.scrollWrap нужен для отступа от скролла, до правого края формы (по макету)
 
 import { FC } from "react";
-import { Input } from "@/components/ui/Modal/Input/Input";
-import { CreditCardIcon } from "@/assets/inline-svg";
+import { Input } from "@/components/ui/Input/Input";
+import { InformationCircleIcon } from "@/assets/inline-svg";
 import css from "./NewCardForm.module.scss";
 
 interface INewCardForm {
@@ -18,9 +18,9 @@ export const NewCardForm: FC<INewCardForm> = ({ onClose }) => {
           <h2>Create new Card</h2>
 
           <Input
-            label="Card Number*"
+            labelText="Card Number*"
+            icon={InformationCircleIcon}
             placeholder="Number"
-            icon={CreditCardIcon}
           />
         </div>
 
