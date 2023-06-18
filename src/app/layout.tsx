@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { Container } from "@/components/layout/container/container";
+import { Container } from "@/components/layout/Container/Container";
 import "@/styles/global.scss";
 
 export const metadata = {
