@@ -1,0 +1,25 @@
+.label {
+  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inputWrap {
+  position: relative;
+  height: 40px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.input {
+  width: 100%;
+}
+
+.labelText {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
