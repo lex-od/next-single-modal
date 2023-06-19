@@ -16,19 +16,15 @@ export const useSelect = <
   const triggerRef = useRef<TriggerElement>(null);
   const dropRef = useRef<DropElement>(null);
 
-  const toggleOpen = () => setOpen((state) => !state);
-
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      const composed = e.composedPath();
-      if (
-        (triggerRef.current && composed.includes(triggerRef.current)) ||
-        (dropRef.current && composed.includes(dropRef.current))
-      ) {
-        return;
+      const isInside = e.composedPath().some((target) => {
+        return target === triggerRef.current || target === dropRef.current;
+      });
+      if (!isInside) {
+        setOpen(false);
+        onClose?.();
       }
-      setOpen(false);
-      onClose?.();
     };
 
     if (open) {
@@ -36,6 +32,10 @@ export const useSelect = <
     }
     return () => window.removeEventListener("click", handleClick, true);
   }, [open, onClose]);
+
+  const toggleOpen = () => {
+    setOpen((state) => !state);
+  };
 
   return {
     open,
