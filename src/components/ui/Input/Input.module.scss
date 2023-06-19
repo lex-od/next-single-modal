@@ -1,40 +1,42 @@
+@import "styles/shared";
+
 .label {
   padding: 3px 16px;
   display: flex;
   align-items: center;
   gap: 16px;
 
-  background-color: #f9f9fa;
-  border: 1px solid #edeff1;
+  background-color: $secondary-background-color;
+  border: 1px solid $light-gray-color;
   border-radius: 10px;
   cursor: text;
   transition: border-color 200ms;
 
   &:hover,
   &:focus-within {
-    border-color: #6367f6;
+    border-color: $violet-accent-color;
 
     :global(.icon) {
-      fill: #6367f6;
+      fill: $violet-accent-color;
     }
     :global(.label-text) {
-      color: #6367f6;
+      color: $violet-accent-color;
     }
   }
   &:global(.is-error) {
-    background-color: rgba(208, 103, 106, 0.1);
-    border-color: #d0676a;
+    background-color: $error-background-color;
+    border-color: $error-text-color;
 
     :global(.icon) {
-      fill: #d0676a;
+      fill: $error-text-color;
     }
     :global(.label-text) {
-      color: #d0676a;
+      color: $error-text-color;
     }
   }
 
   :global(.icon) {
-    fill: #5a607d;
+    fill: $primary-text-color;
     transition: fill 200ms;
   }
 
@@ -54,12 +56,12 @@
     outline: none;
     background-color: transparent;
 
-    color: #070f18;
+    color: $secondary-text-color;
     line-height: 1.71;
 
     &::placeholder {
       opacity: 0;
-      color: #b8bbc8;
+      color: $placeholder-gray-color;
       transition: opacity 200ms;
     }
     &:focus::placeholder {

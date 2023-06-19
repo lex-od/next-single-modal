@@ -1,0 +1,46 @@
+// 📌 Variables
+
+$primary-text-color: #5a607d;
+$secondary-text-color: #070f18;
+$error-text-color: #d0676a;
+
+$secondary-background-color: #f9f9fa;
+$error-background-color: rgba(208, 103, 106, 0.1);
+
+$green-accent-color: #4fae70;
+$violet-accent-color: #6367f6;
+
+$primary-white-color: #ffffff;
+$inactive-gray-color: #bbc1c9;
+$placeholder-gray-color: #b8bbc8;
+$light-gray-color: #edeff1;
+$backdrop-gray-color: rgba(7, 15, 24, 0.5);
+$light-green-color: rgba(79, 174, 112, 0.1);
+$light-violet-color: #eaefff;
+
+// 📌 Placeholders
+
+%small-input-label {
+  padding: 2px 12px;
+  gap: 12px;
+
+  :global {
+    .input-wrap {
+      height: 30px;
+    }
+
+    .input {
+      font-size: 12px;
+      line-height: 1.33;
+
+      &:focus + .label-text,
+      &:not(:placeholder-shown) + .label-text {
+        font-size: 11px;
+      }
+    }
+
+    .label-text {
+      font-size: 12px;
+    }
+  }
+}

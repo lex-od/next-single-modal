@@ -1,4 +1,5 @@
 @import "node_modules/modern-normalize/modern-normalize.css";
+@import "styles/shared";
 
 html,
 body {
@@ -8,7 +9,7 @@ body {
 
 body {
   font-size: 14px;
-  color: #5a607d;
+  color: $primary-text-color;
 }
 
 h1,

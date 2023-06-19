@@ -4,8 +4,8 @@ import css from "./Input.module.scss";
 
 type TInput = {
   labelText: string;
-  icon: FC<React.SVGAttributes<SVGElement>>;
   labelClassName?: string;
+  icon?: FC<React.SVGAttributes<SVGElement>>;
   isError?: boolean;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -14,8 +14,8 @@ type TInput = {
 
 export const Input: FC<TInput> = ({
   labelText,
-  icon: Icon,
   labelClassName,
+  icon: Icon,
   isError,
   placeholder,
   ...inputProps
@@ -26,7 +26,7 @@ export const Input: FC<TInput> = ({
         "is-error": isError,
       })}
     >
-      <Icon className={"icon"} />
+      {Icon && <Icon className={"icon"} />}
 
       <span className={"input-wrap"}>
         <input
