@@ -1,10 +1,11 @@
 // Под форму сделал классическую верстку, без библиотек, т. к. функционала формы нет в т/з
 // div.scrollWrap нужен для отступа от скролла, до правого края формы (по макету)
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Input } from "@/components/ui/Input/Input";
-import { Select } from "@/components/ui/Select/Select";
+import { ISelectOption, Select } from "@/components/ui/Select/Select";
 import { InformationCircleIcon } from "@/assets/inline-svg";
+import { businessDivisionOptions } from "@/mockedData/selectOptions";
 import css from "./NewCardForm.module.scss";
 
 interface INewCardForm {
@@ -12,6 +13,9 @@ interface INewCardForm {
 }
 
 export const NewCardForm: FC<INewCardForm> = ({ onClose }) => {
+  const [businessDivision, setBusinessDivision] =
+    useState<ISelectOption | null>(null);
+
   return (
     <form className={css.form}>
       <div className={css.scrollWrap}>
@@ -25,7 +29,12 @@ export const NewCardForm: FC<INewCardForm> = ({ onClose }) => {
             placeholder="Number"
           />
 
-          <Select labelText="Business Division*" />
+          <Select
+            labelText="Business Division*"
+            options={businessDivisionOptions}
+            currentOption={businessDivision}
+            onChange={setBusinessDivision}
+          />
         </div>
 
         <div className={css.submitGroup}>Submit group</div>

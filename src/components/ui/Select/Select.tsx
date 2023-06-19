@@ -1,25 +1,21 @@
-import { FC, useRef } from "react";
+import { ChangeEvent, FC, useRef, useState } from "react";
 import clsx from "clsx";
 import { ChevronDownIcon } from "@/assets/inline-svg";
 import { useSelect } from "@/hooks";
 import css from "./Select.module.scss";
 
-type TSelectOption = Record<string, any> & {
+export interface ISelectOption {
   id: number | string;
   name: string;
-};
-
+  [key: string]: any;
+}
 interface ISelect {
   labelText: string;
-  options: TSelectOption[] | null;
-  currentOption: TSelectOption | null;
-  onChange: (option: TSelectOption) => void;
+  options: ISelectOption[] | null;
+  currentOption: ISelectOption | null;
+  onChange: (option: ISelectOption) => void;
   className?: string;
   isError?: boolean;
-  inputProps?: React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  >;
 }
 
 export const Select: FC<ISelect> = ({
@@ -29,17 +25,20 @@ export const Select: FC<ISelect> = ({
   onChange,
   className,
   isError,
-  inputProps = {},
 }) => {
   const { open, setOpen, triggerRef, dropRef } = useSelect();
+  const [search, setSearch] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleCurrentBtnClick = () => {
     setOpen((state) => !state);
     inputRef.current?.focus();
   };
-
-  const handleChange = (option: TSelectOption) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    setOpen(true);
+  };
+  const handleChange = (option: ISelectOption) => {
     setOpen(false);
     onChange(option);
   };
@@ -47,8 +46,8 @@ export const Select: FC<ISelect> = ({
   return (
     <div
       className={clsx(css.select, className, {
-        "is-error": isError,
         "is-open": open,
+        "is-error": isError,
       })}
     >
       <button
@@ -62,8 +61,9 @@ export const Select: FC<ISelect> = ({
           <input
             className="input"
             placeholder="Search"
+            value={search}
+            onChange={handleSearch}
             ref={inputRef}
-            {...inputProps}
           />
           <span className="label-text">{labelText}</span>
         </span>
@@ -76,7 +76,7 @@ export const Select: FC<ISelect> = ({
           <ul className="option-list">
             {options?.length ? (
               options?.map((option) => (
-                <li key={option.id}>
+                <li className="option-item" key={option.id}>
                   <button
                     type="button"
                     className="option-button"
@@ -88,7 +88,7 @@ export const Select: FC<ISelect> = ({
               ))
             ) : (
               <li>
-                <p className="no-results">No results</p>
+                <p className="not-found">Options not found</p>
               </li>
             )}
           </ul>
