@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
-import { ChevronDownIcon } from "@/assets/inline-svg";
+import { ChevronDownIcon } from "@/assets/inlineSvg";
 import { useSelect } from "@/hooks";
 import css from "./Select.module.scss";
 
