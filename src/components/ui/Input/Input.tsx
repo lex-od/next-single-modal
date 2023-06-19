@@ -17,7 +17,7 @@ export const Input: FC<TInput> = ({
   labelClassName,
   icon: Icon,
   isError,
-  placeholder,
+  placeholder = "",
   ...inputProps
 }) => {
   return (
@@ -26,16 +26,12 @@ export const Input: FC<TInput> = ({
         "is-error": isError,
       })}
     >
-      {Icon && <Icon className={"icon"} />}
+      {Icon && <Icon className="icon" />}
 
-      <span className={"input-wrap"}>
-        <input
-          className={"input"}
-          placeholder={placeholder || " "}
-          {...inputProps}
-        />
+      <span className="input-wrap">
+        <input className="input" placeholder={placeholder} {...inputProps} />
 
-        <span className={"label-text"}>{labelText}</span>
+        <span className="label-text">{labelText}</span>
       </span>
     </label>
   );

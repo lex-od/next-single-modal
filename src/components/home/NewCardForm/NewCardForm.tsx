@@ -3,6 +3,7 @@
 
 import { FC } from "react";
 import { Input } from "@/components/ui/Input/Input";
+import { Select } from "@/components/ui/Select/Select";
 import { InformationCircleIcon } from "@/assets/inline-svg";
 import css from "./NewCardForm.module.scss";
 
@@ -23,6 +24,8 @@ export const NewCardForm: FC<INewCardForm> = ({ onClose }) => {
             icon={InformationCircleIcon}
             placeholder="Number"
           />
+
+          <Select labelText="Business Division*" />
         </div>
 
         <div className={css.submitGroup}>Submit group</div>

@@ -40,6 +40,8 @@
 
 label.inputLabel {
   @extend %small-input-label;
+
+  margin-bottom: 30px;
 }
 
 .submitGroup {
