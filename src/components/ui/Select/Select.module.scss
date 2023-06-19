@@ -6,7 +6,7 @@
   &:hover,
   &:focus-within,
   &:global(.is-open) {
-    :global(.label) {
+    :global(.current-button) {
       border-color: $violet-accent-color;
     }
     :global(.label-text) {
@@ -17,7 +17,7 @@
     }
   }
   &:global(.is-error) {
-    :global(.label) {
+    :global(.current-button) {
       background-color: $error-background-color;
       border-color: $error-text-color;
     }
@@ -29,7 +29,8 @@
     }
   }
 
-  :global(.label) {
+  :global(.current-button) {
+    width: 100%;
     padding: 3px 16px;
     display: flex;
     align-items: center;
@@ -38,8 +39,8 @@
     background-color: $secondary-background-color;
     border: 1px solid $light-gray-color;
     border-radius: 10px;
-    cursor: pointer;
     transition: border-color 200ms;
+    outline: none;
   }
 
   :global(.input-wrap) {
@@ -104,5 +105,10 @@
     background-color: $primary-white-color;
     box-shadow: 0px 10px 30px rgba(192, 196, 205, 0.3);
     overflow: hidden;
+  }
+
+  :global(.option-list) {
+    max-height: 156px;
+    overflow-y: scroll;
   }
 }
