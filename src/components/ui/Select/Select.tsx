@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import { ChevronDownIcon } from "@/assets/inline-svg";
 import { useSelect } from "@/hooks";
@@ -28,17 +28,22 @@ export const Select: FC<ISelect> = ({
 }) => {
   const { open, setOpen, triggerRef, dropRef } = useSelect();
   const [search, setSearch] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+
+  const filteredOptions = useMemo(() => {
+    const lowSearch = search.trim().toLowerCase();
+    return options?.filter(({ name }) =>
+      name.toLowerCase().includes(lowSearch)
+    );
+  }, [options, search]);
+
+  useEffect(() => {
+    setSearch("");
+  }, [open]);
 
   const handleCurrentBtnClick = () => {
     setOpen((state) => !state);
-    inputRef.current?.focus();
   };
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setOpen(true);
-  };
-  const handleChange = (option: ISelectOption) => {
+  const handleOptionChange = (option: ISelectOption) => {
     setOpen(false);
     onChange(option);
   };
@@ -46,6 +51,7 @@ export const Select: FC<ISelect> = ({
   return (
     <div
       className={clsx(css.select, className, {
+        "is-current-option": currentOption,
         "is-open": open,
         "is-error": isError,
       })}
@@ -55,16 +61,21 @@ export const Select: FC<ISelect> = ({
         onClick={handleCurrentBtnClick}
         ref={triggerRef}
         type="button"
-        tabIndex={-1}
       >
         <span className="input-wrap">
-          <input
-            className="input"
-            placeholder="Search"
-            value={search}
-            onChange={handleSearch}
-            ref={inputRef}
-          />
+          {!open && currentOption && (
+            <span className="current-option">{currentOption.name}</span>
+          )}
+          {open && (
+            <input
+              className="input"
+              placeholder="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyUp={(e) => e.preventDefault()}
+              autoFocus
+            />
+          )}
           <span className="label-text">{labelText}</span>
         </span>
 
@@ -74,20 +85,20 @@ export const Select: FC<ISelect> = ({
       {open && (
         <div className="dropdown" ref={dropRef}>
           <ul className="option-list">
-            {options?.length ? (
-              options?.map((option) => (
+            {filteredOptions?.length ? (
+              filteredOptions.map((option) => (
                 <li className="option-item" key={option.id}>
                   <button
                     type="button"
                     className="option-button"
-                    onClick={() => handleChange(option)}
+                    onClick={() => handleOptionChange(option)}
                   >
                     {option.name}
                   </button>
                 </li>
               ))
             ) : (
-              <li>
+              <li className="option-item">
                 <p className="not-found">Options not found</p>
               </li>
             )}
