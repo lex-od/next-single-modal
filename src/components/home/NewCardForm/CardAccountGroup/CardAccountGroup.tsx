@@ -48,6 +48,7 @@ export const CardAccountGroup = () => {
           currentOption={bank}
           onChange={setBank}
           className={css.bankSelect}
+          isError
         />
       </div>
     </div>

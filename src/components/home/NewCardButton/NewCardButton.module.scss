@@ -1,0 +1,22 @@
+@import "styles/shared";
+
+.button {
+  padding: 16px;
+  min-width: 300px;
+
+  background-color: $primary-white-color;
+  border: 1px solid $inactive-gray-color;
+  border-radius: 10px;
+  transition: color 200ms, border-color 200ms;
+  outline: none;
+
+  color: $primary-text-color;
+  font-size: 18px;
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    color: $violet-accent-color;
+    border-color: $violet-accent-color;
+  }
+}

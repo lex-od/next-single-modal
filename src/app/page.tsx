@@ -3,8 +3,8 @@ import css from "./page.module.scss";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Single Modal</h1>
+    <main className={css.main}>
+      <h1>Click to open modal...</h1>
 
       <NewCardButton />
     </main>
