@@ -18,6 +18,8 @@ interface ISelect {
   isError?: boolean;
 }
 
+// Аналогично с Input, верхний css-класс задаю уникальный, остальные глобальные -
+// для возможности переопределения (при необходимости)
 export const Select: FC<ISelect> = ({
   labelText,
   options,
@@ -31,6 +33,7 @@ export const Select: FC<ISelect> = ({
 
   const filteredOptions = useMemo(() => {
     const lowSearch = search.trim().toLowerCase();
+
     return options?.filter(({ name }) =>
       name.toLowerCase().includes(lowSearch)
     );

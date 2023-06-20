@@ -7,6 +7,7 @@ export const metadata = {
   description: "Home page description",
 };
 
+// Оптимальное подключение шрифта
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",

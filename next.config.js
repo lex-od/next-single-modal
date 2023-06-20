@@ -7,6 +7,7 @@ const nextConfig = {
   },
 
   webpack(config) {
+    // Для импорта svg компонентом, как в чистом React
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],

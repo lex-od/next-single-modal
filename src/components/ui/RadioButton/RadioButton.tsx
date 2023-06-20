@@ -1,6 +1,7 @@
 import { FC, useId } from "react";
 import css from "./RadioButton.module.scss";
 
+// Аналогично с Input, пропы элемента - для формы
 type TRadioButton = {
   label: string;
 } & React.DetailedHTMLProps<

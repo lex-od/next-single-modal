@@ -1,3 +1,5 @@
+// Хук для закрытия по клику снаружи селекта (и др. выпадающих списков)
+
 import { useState, useEffect, useRef } from "react";
 
 export interface IUseSelectConfig {
