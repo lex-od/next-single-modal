@@ -1,44 +1,54 @@
 // Под форму сделал классическую верстку, без библиотек, т. к. функционала формы нет в т/з
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Input } from "@/components/ui/Input/Input";
-import { ISelectOption, Select } from "@/components/ui/Select/Select";
-import { InformationCircleIcon } from "@/assets/inlineSvg";
-import { businessDivisionOptions } from "@/mockedData/selectOptions";
+import {
+  CloseIcon,
+  CreditCardIcon,
+  DocumentIcon,
+  InformationCircleIcon,
+} from "@/assets/inlineSvg";
 import css from "./NewCardForm.module.scss";
+import { LegalEntityGroup } from "./LegalEntityGroup/LegalEntityGroup";
 
 interface INewCardForm {
   onClose: () => void;
 }
 
 export const NewCardForm: FC<INewCardForm> = ({ onClose }) => {
-  const [businessDivision, setBusinessDivision] =
-    useState<ISelectOption | null>(null);
-
   return (
-    <form className={css.form}>
+    <form className={css.form} onSubmit={(e) => e.preventDefault()}>
       <div className={css.scrollWrap}>
-        <div className={css.topWrap}>
+        <div>
           <div className={css.titleGroup}>
             <h2>Create new Card</h2>
+            <CreditCardIcon />
+            <span>
+              <DocumentIcon />
+              New
+            </span>
+            <button type="button" onClick={onClose}>
+              <CloseIcon />
+            </button>
           </div>
 
-          <Input
-            labelText="Card Number*"
-            labelClassName={css.inputLabel}
-            icon={InformationCircleIcon}
-            placeholder="Number"
-          />
+          <div className={css.fieldsWrap}>
+            <LegalEntityGroup />
 
-          <Select
-            labelText="Business Division*"
-            options={businessDivisionOptions}
-            currentOption={businessDivision}
-            onChange={setBusinessDivision}
-          />
+            <Input
+              labelText="Card Number*"
+              labelClassName={css.inputLabel}
+              icon={InformationCircleIcon}
+              placeholder="Number"
+            />
+          </div>
         </div>
 
-        <div className={css.submitGroup}>Submit group</div>
+        <div className={css.submitGroup}>
+          <button className={css.submitButton} type="submit" disabled>
+            Save
+          </button>
+        </div>
       </div>
     </form>
   );
