@@ -4,6 +4,7 @@ import { bankOptions, currencyOptions } from "@/mockedData/selectOptions";
 import { Input } from "@/components/ui/Input/Input";
 import { InformationCircleIcon } from "@/assets/inlineSvg";
 import css from "./CardAccountGroup.module.scss";
+import { RadioButton } from "@/components/ui/RadioButton/RadioButton";
 
 export const CardAccountGroup = () => {
   const [currency, setCurrency] = useState<ISelectOption | null>(null);
@@ -12,6 +13,20 @@ export const CardAccountGroup = () => {
   return (
     <div className={css.cardAccountGroup}>
       <h3 className={css.title}>Card account</h3>
+
+      <div className={css.radioGroup}>
+        <RadioButton
+          label="IBAN"
+          name="account-type"
+          value="iban"
+          defaultChecked
+        />
+        <RadioButton
+          label="Account number"
+          name="account-type"
+          value="number"
+        />
+      </div>
 
       <div className={css.fields}>
         <Input
