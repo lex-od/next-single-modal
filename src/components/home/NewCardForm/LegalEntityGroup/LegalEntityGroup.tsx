@@ -24,7 +24,6 @@ export const LegalEntityGroup = () => {
           currentOption={businessDivision}
           onChange={setBusinessDivision}
         />
-
         <Select
           labelText="Legal entity*"
           options={legalEntityOptions}

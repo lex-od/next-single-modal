@@ -74,3 +74,18 @@ export const currencyOptions = [
     name: "EUR",
   },
 ];
+
+export const bankOptions = [
+  {
+    id: 1,
+    name: "Bank 1",
+  },
+  {
+    id: 2,
+    name: "Bank 2",
+  },
+  {
+    id: 3,
+    name: "Bank 3",
+  },
+];

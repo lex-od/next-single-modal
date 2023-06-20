@@ -1,0 +1,21 @@
+@import "styles/shared";
+
+.cardItem {
+  padding: 16px;
+  border: 1px solid $light-gray-color;
+  border-radius: 10px;
+
+  > p {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.33;
+  }
+}
+
+label.inputLabel {
+  @extend %small-input-label;
+
+  &:first-of-type {
+    margin-bottom: 16px;
+  }
+}

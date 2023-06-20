@@ -17,7 +17,7 @@ export const Input: FC<TInput> = ({
   labelClassName,
   icon: Icon,
   isError,
-  placeholder = "",
+  placeholder = " ",
   ...inputProps
 }) => {
   return (

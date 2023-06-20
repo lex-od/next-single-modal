@@ -1,0 +1,40 @@
+@import "styles/shared";
+
+.cardAccountGroup {
+  padding: 24px 24px 44px;
+}
+
+.titleGroup {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > h3 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.71;
+  }
+
+  > button {
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border: none;
+    border-radius: 8px;
+    background-color: $light-violet-color;
+
+    color: $violet-accent-color;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+  }
+}
+
+.cardList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
